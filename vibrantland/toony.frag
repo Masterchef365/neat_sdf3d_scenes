@@ -115,6 +115,11 @@ void main() {
             break;
         }
 
+        if (hit.dist < HIT_THRESHOLD + 0.01) {
+            color = BACKGROUND;
+            break;
+        }
+
         if (hit.dist > CLIP_FAR) {
             color = BACKGROUND;
             break;
