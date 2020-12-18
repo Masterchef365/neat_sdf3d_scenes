@@ -94,8 +94,7 @@ SDF scene(vec3 pos) {
 
 const float CLIP_NEAR = 0.1; // Near clipping sphere
 const float CLIP_FAR = 1000.; // Far clipping sphere
-const int MAX_STEPS = 100; // Maximum sphere steps
-const float HIT_THRESHOLD = 0.0001; // Minimum distance considered a hit
+const int MAX_STEPS = 10; // Maximum sphere steps
 const vec3 BACKGROUND = vec3(0.); // Backgroudn color
 
 void main() {
@@ -106,23 +105,27 @@ void main() {
 
 	vec3 color = BACKGROUND;
     vec3 pos = origin + unit_ray * CLIP_NEAR;
+    float dist = 0.;
     int i;
     for (i = 0; i < MAX_STEPS; i++) {
         SDF hit = scene(pos);
 
-        if (hit.dist < HIT_THRESHOLD) {
+        if (hit.dist < 0.3) {
             color = hit.color;
+            dist = hit.dist;
             break;
         }
 
         if (hit.dist > CLIP_FAR) {
             color = BACKGROUND;
+            dist = CLIP_FAR;
             break;
         }
 
         pos += unit_ray * hit.dist;
     }
 
-    outColor = vec4(color, 1.0);
-    //outColor = vec4(vec3(float(i) / MAX_STEPS * 2.), 1.0);
+    //outColor = vec4(color, 1.0);
+    outColor = vec4(vec3(float(i) / MAX_STEPS), 1.0);
+    //outColor = vec4(vec3(dist), 1.0);
 }
