@@ -69,7 +69,7 @@ SDF quad(vec3 pos, float x, vec3 color, float radius) {
 }
 
 float rand(vec3 co){
-    return fract(sin(dot(co, vec3(12.9898,78.233,24.12301))) * 43758.5453);
+    return fract(sin(dot(co, vec3(11.9898,78.233,24.12301))) * 438.5453);
 }
 
 vec3 hsv2rgb(vec3 c) {
@@ -80,7 +80,7 @@ vec3 hsv2rgb(vec3 c) {
 
 SDF scene(vec3 pos) {
     vec3 cellp = (pos + 1. / 2.);
-    float hue = rand(vec3(ivec3(pos) / 4));
+    float hue = rand(vec3(ivec3(pos + 15) / 4));
     pos = fract(cellp) * 2. - 1.;
     vec3 color = hsv2rgb(vec3(hue, .8, 1));
 
