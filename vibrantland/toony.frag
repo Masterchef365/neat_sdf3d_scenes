@@ -115,7 +115,7 @@ void main() {
             break;
         }
 
-        if (hit.dist < HIT_THRESHOLD + 0.01) {
+        if (hit.dist < HIT_THRESHOLD + 0.05) {
             color = BACKGROUND;
             break;
         }
