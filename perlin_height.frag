@@ -84,7 +84,7 @@ float pNoise(vec2 p, int res){
 }
 
 
-SDF pelin_height(vec3 pos, int res) {
+SDF perlin_height(vec3 pos, int res) {
     float p = pNoise(pos.xz / 4., res);
     return SDF(
         pos.y - p,
@@ -93,7 +93,7 @@ SDF pelin_height(vec3 pos, int res) {
 }
 
 SDF scene(vec3 pos) {
-    return pelin_height(pos, 4);
+    return perlin_height(pos, 4);
 }
 
 
