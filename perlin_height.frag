@@ -104,7 +104,7 @@ const float HIT_THRESHOLD = 0.001; // Minimum distance considered a hit
 const vec3 BACKGROUND = vec3(0.); // Backgroudn color
 
 void main() {
-    mat4 cam_inv = inverse(camera[gl_ViewIndex]);
+    mat4 cam_inv = camera[gl_ViewIndex];
     vec3 origin = (cam_inv * vec4(vec3(0.), 1.)).xyz;
     vec3 ray_out = (cam_inv * vec4(fragPos.x, fragPos.y, -1., 1.)).xyz;
     vec3 unit_ray = normalize(ray_out - origin);

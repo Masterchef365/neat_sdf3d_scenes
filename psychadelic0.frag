@@ -67,7 +67,7 @@ SDF scene(vec3 pos) {
 }
 
 void main() {
-    mat4 cam_inv = inverse(camera[gl_ViewIndex]);
+    mat4 cam_inv = camera[gl_ViewIndex];
     vec3 origin = (cam_inv * vec4(vec3(0.), 1.)).xyz;
     vec3 ray_out = (cam_inv * vec4(fragPos.x, fragPos.y, -1., 1.)).xyz;
 
